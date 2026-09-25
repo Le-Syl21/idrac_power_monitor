@@ -2,17 +2,15 @@
   "domain": "idrac_power",
   "name": "iDRAC Server Monitor",
   "codeowners": [
+    "@Le-Syl21",
     "@Breina",
     "@Xmow49"
   ],
   "config_flow": true,
-  "dependencies": [
-    "http"
-  ],
-  "documentation": "https://github.com/Breina/idrac_power_monitor",
+  "documentation": "https://github.com/Le-Syl21/idrac_power_monitor",
   "integration_type": "device",
   "iot_class": "local_polling",
-  "issue_tracker": "https://github.com/Breina/idrac_power_monitor/issues",
+  "issue_tracker": "https://github.com/Le-Syl21/idrac_power_monitor/issues",
   "requirements": [],
-  "version": "1.7.0"
+  "version": "2.0.0"
 }
