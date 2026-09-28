@@ -1,10 +1,10 @@
 name: Validate
 
-# Blocking at release time only: everything is checked locally before tagging.
+# Manual only: the HACS license check cannot pass here, as the upstream project
+# never had a license and a fork cannot pick one for its authors (the action
+# offers no way to ignore that check). Installing as a custom repository does
+# not need it. Run it by hand to check everything else.
 on:
-  push:
-    tags:
-      - 'v*.*.*'
   workflow_dispatch:
 
 jobs:
