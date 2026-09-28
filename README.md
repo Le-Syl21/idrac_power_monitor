@@ -75,6 +75,9 @@ python scripts/idrac_probe.py 192.168.1.120 root calvin --raw
 
 ## Changelog
 
+### 2.1.1
+- The iDRAC's HTTP session is released with `detach()` instead of being closed: it shares Home Assistant's connector, and closing it (which Home Assistant reported as "closes the Home Assistant aiohttp session") could cut connections of other integrations
+
 ### 2.1.0
 - System Event Log: "Last event" sensor (newest record; the ten latest as attributes), "Event log problem" sensor (on while the log holds a warning or critical record), "Clear event log" button, and an `idrac_power_event` event per new record for notifications. iDRAC 6 through the GUI's log export, iDRAC 7/8/9 through Redfish `LogServices/Sel`. Read at most once a minute; a failed read keeps the last log instead of failing the poll
 - iDRAC 6: every answer is checked against its request. An iDRAC whose web server has fallen out of step (seen on a real R710, answering each request with the one two requests earlier) now makes the entities unavailable instead of publishing another request's data
