@@ -50,6 +50,9 @@ python scripts/idrac_probe.py 192.168.1.120 root calvin --raw
 
 ## Changelog
 
+### 2.0.1
+- iDRAC 6: a powered-off server reports its power supplies as "Unknown" ("Present and System is OFF"); they now read as unknown instead of raising the PSU and hardware health problem sensors
+
 ### 2.0.0
 - iDRAC 6 support through the iDRAC web GUI API, without any new dependency (upstream #32, supersedes upstream PR #44 which needed IPMI)
   - verified on real PowerEdge R510 and R710 (iDRAC6 firmware 2.92): power from the `systemLevel` sensor shown on the iDRAC power page (`pmReading`/`ipowerWatts1` only cover part of the load), energy from the power tracking counter (`ptsReadingc1`, kWh), standby power from the one-minute average while the host is off
