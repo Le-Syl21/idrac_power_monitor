@@ -10,7 +10,7 @@ from homeassistant.exceptions import ConfigEntryAuthFailed, ConfigEntryNotReady
 
 from .client import CannotConnect, InvalidAuth, RedfishConfig, SessionLimit
 from .const import CONF_API, HOST, PASSWORD, USERNAME
-from .coordinator import IdracCoordinator
+from .coordinator import IdracCoordinator, energy_store
 from .factory import async_create_client
 
 _LOGGER = logging.getLogger(__name__)
@@ -60,3 +60,8 @@ async def async_unload_entry(hass: HomeAssistant, entry: IdracConfigEntry) -> bo
         await client.close()
         client.session.detach()
     return unload_ok
+
+
+async def async_remove_entry(hass: HomeAssistant, entry: IdracConfigEntry) -> None:
+    """Forget the per-PSU energy totals of a deleted server."""
+    await energy_store(hass, entry).async_remove()
